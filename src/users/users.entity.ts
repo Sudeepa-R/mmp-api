@@ -8,11 +8,15 @@ export class UserDetails{
     id:number
 
     @Exclude()
-    @Column({name:'Name',type:'varchar',length:100,nullable:true})
-    name:string
+    @Column({name:'FirstName',type:'varchar',length:100,nullable:true})
+    firstName:string
 
     @Exclude()
-    @Column({name:'Email',type:'varchar',length:100,nullable:true})
-    email:string
+    @Column({name:'UserEmail',type:'varchar',length:100,nullable:true})
+    userEmail:string
+
+    @Exclude()
+    @Column({name:'Password',type:'varchar',length:50,nullable:true})
+    password:string
     
 }

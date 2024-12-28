@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserDetails } from './users.entity';
 import { Repository } from 'typeorm';
+import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class UsersService {
@@ -12,10 +13,12 @@ export class UsersService {
 
     async saveData(bulkData:UserDetails):Promise<UserDetails>{
         if(bulkData.id>0){
+            bulkData.password=await bcrypt.hash(bulkData.password,10)
             const res=await this.userDetail.update({id:bulkData.id},bulkData)
             return this.getDataById(bulkData.id)
         }
         else{
+            bulkData.password=await bcrypt.hash(bulkData.password,10)
             return await this.userDetail.save(bulkData);
     }   
     }
