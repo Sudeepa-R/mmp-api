@@ -14,5 +14,9 @@ export class UserDetails{
     @Exclude()
     @Column({name:'Email',type:'varchar',length:100,nullable:true})
     email:string
+
+    @Exclude()
+    @Column({name:'Password',type:'varchar',length:100,nullable:true})
+    password:string
     
 }
