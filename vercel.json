@@ -1,10 +1,9 @@
 {
-    "builds": [
-      {
-        "src": "package.json",
-        "use": "@vercel/node"
-      }
-    ],
-    "outputDirectory": "dist"
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/main.ts",
+      "use": "@vercel/node"
+    }
+  ]
+}
