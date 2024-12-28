@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { UserDetails } from './users/users.entity';
 import * as dotenv from 'dotenv';
+import { AuthModule } from './Auth/auth.module';
 dotenv.config()
 
 
@@ -22,7 +23,8 @@ dotenv.config()
         rejectUnauthorized: false
       }
     }),
-    UsersModule
+    UsersModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],
