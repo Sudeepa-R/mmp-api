@@ -11,7 +11,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
 
   app.enableCors({
-    origin: ['http://localhost:5173', 'https://prod-mmp-api.vercel.app/'],
+    origin:[ 'http://localhost:5173','https://prod-mmp-api.vercel.app/'],
     credentials: true,
   });
 
@@ -34,11 +34,8 @@ async function bootstrap() {
   SwaggerModule.setup('/', app, document, {
     swaggerOptions: { docException: 'none', tagsSorter: 'alpha' },
   });
-
-  await app.init(); // Initialize the application
+  await app.init();
+  await app.listen(process.env.PORT ?? 3000);
 }
-
 bootstrap();
-
-// Export the server for Vercel
 export default server;
